@@ -8,14 +8,13 @@ import sys
 def distanceBetween(a, b):
     """Returns the distance between 2 3D points"""
 
-    return sqrt((b[0] - a[0]) ** 2 + (b[1] - a[1]) ** 2 + (b[2] - a[2])
-                ** 2)
+    return sqrt((b[0] - a[0]) ** 2 + (b[1] - a[1]) ** 2 + (b[2] - a[2]) ** 2)
 
 
 def heuristic(actualPosition, goalPosition):
     """Basically does the same as distanceBetween(), but I gave it another 
-    name, so the logic ofthe code can be more clear"""
-
+    name, so the logic of the code can be more clear"""
+    
     return distanceBetween(actualPosition, goalPosition)
 
 
@@ -41,7 +40,8 @@ class Solve:
                                parent=None,
                                generation=0,
                                totalHeuristic=heuristic([0, 0, 0],
-                               self.goal))
+                               self.goal)
+                            )
 
     def frontier(self):
         """Returns a list of the available Nodes"""
@@ -60,7 +60,8 @@ class Solve:
         for i in copyOfStations:
             frontier.append(Node(state=i, parent=self.actualNode,
                             generation=self.actualNode.generation + 1,
-                            totalHeuristic=heuristic(i, self.goal) + distanceBetween(self.actualNode.state, i)))
+                            totalHeuristic=heuristic(i, self.goal) + distanceBetween(self.actualNode.state, i))
+                            )
 
         # Returning list of available Nodes
 
@@ -70,13 +71,11 @@ class Solve:
 
         # Sorting Nodes by their h(n) + g(n) values
 
-        sortedFrontier = sorted(self.frontier(), key=lambda node: \
-                                node.totalHeuristic)
+        sortedFrontier = sorted(self.frontier(), key=lambda node: node.totalHeuristic)
 
         # Keeping track of teletransportation distance
 
-        self.travelDistances.append(distanceBetween(self.actualNode.state,
-                                    sortedFrontier[0].state))
+        self.travelDistances.append(distanceBetween(self.actualNode.state, sortedFrontier[0].state))
 
         # Moving to the next node
 
@@ -90,12 +89,12 @@ class Solve:
 
     def solution(self):
 
-        # While Mr. Little Z doesn'tt reach it's goal, it should "teletransport"
+        # While Mr. Little Z doesn't reach it's goal, it should "teletransport"
 
         while self.actualNode.state != self.goal:
             self.teletransport()
 
-        # Returning the max value of the travelDistances list
+        # Returning the max value of the travelDistances list 
 
         return '{:.2f}'.format(max(self.travelDistances))
 
