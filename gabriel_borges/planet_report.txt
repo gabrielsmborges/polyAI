@@ -1,0 +1,16 @@
+1)  
+    For this problem first tried to solve it using Breadth-First Search, but I soon realized that A* Search would be a better solution.
+
+3)  
+    I used Nodes that keep track of the state (actual position),
+    parent (if any), generation (number of teletransportation) and 
+    total heuristic (that returns the cost to reach the node + the cost to reach the goal Node).
+
+    The frontier function returns the availabe nodes from the current position,
+    if the case where the generation is equal to the number n of teletransportations - 1,
+    the frontier should only return the goal, because we need to reach the goal in n teletransportations.
+
+    Every time we teletransport, i keep track of the distance of the teletransportation in the travelDistances list.
+    So in the end, I only need to print the maximum value of the travelDistances.
+
+    This algorithm could be improved if I used more methods of Combinatorial optimization.

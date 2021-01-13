@@ -104,7 +104,7 @@ def readFile():
 
     # reading the file from stdin
 
-    for line in fileinput.input():
+    for line in sys.stdin:
         fileData.append(line.replace('\n', ''))
 
     # Globalizing data
@@ -137,9 +137,7 @@ def readFile():
 
 
 if __name__ == '__main__':
-    if not len(sys.argv) < 2:
-        readFile()
-        print (Solve(goal=zearth, ttransportations=teleportations,
-                    stations=stations).solution())
-    else:
-        raise Exception('You should pass a file as argument')
+    readFile()
+    print(Solve(goal=zearth, ttransportations=teleportations, stations=stations).solution())
+else:
+    raise Exception('You should pass a file as argument')
