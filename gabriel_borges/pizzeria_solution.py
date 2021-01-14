@@ -4,7 +4,7 @@ import sys
 def solution(shape, nPizzerias, pizzerias ):
 
     #using numpy.zeros is easier than building an empy array by hand
-    city = np.zeros(shape=(shape, shape))
+    city = np.zeros(shape=(shape, shape), dtype=int)
 
     #Going through every pizzeria
     for pizzeria in range(0, nPizzerias):
