@@ -15,7 +15,7 @@ def solution(shape, nPizzerias, pizzerias ):
                 #Using the absolute value because the value can be negative
                 #Getting the difference between the cell y and the pizzeria y
                 diffY = abs(column - (pizzerias[pizzeria][0]-1))
-                #Getting the difference between the cell x and the pizzeria x
+                #Getting the difference between the cell x and the pizzeria x 
                 diffX = abs(row - (pizzerias[pizzeria][1]-1))
                 #DiffX + DiffY returns the manhattan distance between the cell and the pizzeria
                 #This value should be <= max distance that the delivery guy can travel in the manhattan distance
