@@ -18,11 +18,14 @@ def solution(shape, nPizzerias, pizzerias ):
                 #Getting the difference between the cell x and the pizzeria x 
                 diffX = abs(row - (pizzerias[pizzeria][1]-1))
                 #DiffX + DiffY returns the manhattan distance between the cell and the pizzeria
-                #This value should be <= max distance that the delivery guy can travel in the manhattan distance
-                if (diffX + diffY <= pizzerias[pizzeria][2]):
+                manhattanDistance = diffX + diffY
+                #manhattanDistance should be <= max distance that the delivery guy can travel in the manhattan distance
+                if (manhattanDistance <= pizzerias[pizzeria][2]):
                     city[column][row] += 1
 
-    return(max(map(max, city)))
+    maxValueCityBlock = (max(map(max, city)))
+    
+    return maxValueCityBlock
 
 
 if __name__ == "__main__":

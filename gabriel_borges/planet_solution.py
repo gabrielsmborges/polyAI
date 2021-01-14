@@ -29,9 +29,9 @@ class Node:
 
 class Solve:
 
-    def __init__(self, goal, ttransportations, stations):
+    def __init__(self, goal, teleportations, stations):
         self.goal = goal
-        self.ttransportations = ttransportations
+        self.teleportations = teleportations
         self.stations = stations
         self.position = [0, 0, 0]
         self.num_explored = (0, )
@@ -52,9 +52,9 @@ class Solve:
 
         copyOfStations = self.stations
 
-        # When we have only one teletransportation left the frontier should only have the goal
+        # When we have only one teleportation left the frontier should only have the goal
 
-        if self.actualNode.generation >= self.ttransportations - 1:
+        if self.actualNode.generation >= self.teleportations - 1:
             copyOfStations = [self.goal]
 
         for i in copyOfStations:
@@ -67,13 +67,13 @@ class Solve:
 
         return frontier
 
-    def teletransport(self):
+    def teleport(self):
 
         # Sorting Nodes by their h(n) + g(n) values
 
         sortedFrontier = sorted(self.frontier(), key=lambda node: node.totalHeuristic)
 
-        # Keeping track of teletransportation distance
+        # Keeping track of teleportation distance
 
         self.travelDistances.append(distanceBetween(self.actualNode.state, sortedFrontier[0].state))
 
@@ -81,7 +81,7 @@ class Solve:
 
         self.actualNode = sortedFrontier[0]
 
-        # If the actual node is in stations list, we should remove it. Because we cannot teletransport to the same location
+        # If the actual node is in stations list, we should remove it. Because we cannot teleport to the same location
 
         for j in self.stations:
             if self.actualNode.state == j:
@@ -89,10 +89,10 @@ class Solve:
 
     def solution(self):
 
-        # While Mr. Little Z doesn't reach it's goal, it should "teletransport"
+        # While Mr. Little Z doesn't reach it's goal, it should "teleport"
 
         while self.actualNode.state != self.goal:
-            self.teletransport()
+            self.teleport()
 
         # Returning the max value of the travelDistances list 
 
@@ -128,4 +128,4 @@ def readFile():
 
 if __name__ == '__main__':
     readFile()
-    print(Solve(goal=zearth, ttransportations=teleportations, stations=stations).solution())
+    print(Solve(goal=zearth, teleportations=teleportations, stations=stations).solution())

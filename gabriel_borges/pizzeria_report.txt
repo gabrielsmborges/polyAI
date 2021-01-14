@@ -1,0 +1,34 @@
+1)
+    I divided this problem into 3 phases:
+        1. Create city matrix
+        2. Adding blocks in the range R (manhattan distance) from the pizzeria.
+        3. Getting the max cell value in the matrix
+
+3)
+    1.
+    For this solution I used the zeros function from the numpy library to create an empty NxN array.
+    
+    Numpy arrays are faster than regular python lists because they have a homogeneous type.
+    
+    The numpy.zeros() function saved me a couple of lines of code because I didn't have to create the list by hand.
+    
+    So I started with an NxN array with all the values set to 0
+
+    2.
+    Then I went through every single cell in the array and calculated it's manhattan distance
+    with every pizzeria.
+    
+    If the manhattan distance was in the range R of the pizzeria, 
+    then I added 1 to the value of the cell that.
+
+    3.
+    At this stage, I already have an array with all the necessary values included.
+    Since our array is a 2D array, I first extracted all the max values from the columns into a 1d array,
+    and then I from this new array I extracted the maximum value and saved it in a variable.
+
+    And this value is the value that will be printed in stdout.
+
+    
+    The main concern that I have with this approach is that I used numpy to do it.
+    Numpy is very good, fast and flexible but if the user doesn't have numpy on
+    his machine that would cause an error.
