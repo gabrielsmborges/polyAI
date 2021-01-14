@@ -125,19 +125,7 @@ def readFile():
         protoList = [float(x) for x in fileData[i].split(' ')]
         stations.append(protoList)
 
-    # Error checking
-
-    if max(zearth) > 10000 or min(zearth) < -10000:
-        raise Exception('Invalid Input')
-    if teleportations < 1 or teleportations > 2000:
-        raise Exception('Invalid Input')
-    for i in stations:
-        if max(i) > 10000 or min(i) < -10000:
-            raise Exception('Invalid Input')
-
 
 if __name__ == '__main__':
     readFile()
     print(Solve(goal=zearth, ttransportations=teleportations, stations=stations).solution())
-else:
-    raise Exception('You should pass a file as argument')
